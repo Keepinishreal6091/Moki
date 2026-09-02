@@ -103,17 +103,37 @@ final class PetActionEngineTests: XCTestCase {
 
     func testPlayIsRejectedBelowMinimumEnergy() {
         var initial = PetState.initial(id: testPetID, at: testDate)
-        initial.stats.energy = 14
+        let requiredEnergy = MokiBalance.approvedV01.minimumEnergyToPlay
+        let unavailableEnergy = requiredEnergy - 1
+        initial.stats.energy = unavailableEnergy
 
         let result = engine.apply(.play, to: initial, at: testDate)
 
         XCTAssertEqual(
             result.outcome,
             .rejected(
-                reason: .insufficientEnergy(required: 15, available: 14)
+                reason: .insufficientEnergy(
+                    required: requiredEnergy,
+                    available: unavailableEnergy
+                )
             )
         )
         XCTAssertEqual(result.state, initial)
+    }
+
+    func testPlayIsAllowedAtMinimumEnergy() {
+        var initial = PetState.initial(id: testPetID, at: testDate)
+        let minimumEnergy = MokiBalance.approvedV01.minimumEnergyToPlay
+        initial.stats.energy = minimumEnergy
+
+        let result = engine.apply(.play, to: initial, at: testDate)
+
+        XCTAssertEqual(result.outcome, .applied(reaction: .enjoyedPlay))
+        XCTAssertEqual(
+            result.state.stats.energy,
+            minimumEnergy + MokiBalance.approvedV01.playDelta.energy,
+            accuracy: 0.000_001
+        )
     }
 
     func testActionAdvancesElapsedTimeBeforeApplyingItsDelta() {
@@ -134,17 +154,28 @@ final class PetActionEngineTests: XCTestCase {
 
     func testRejectedActionStillReturnsTimeAdvancedState() {
         var initial = PetState.initial(id: testPetID, at: testDate)
-        initial.stats.energy = 15
+        let requiredEnergy = MokiBalance.approvedV01.minimumEnergyToPlay
+        let unavailableEnergy = requiredEnergy - 1
+        initial.stats.energy = unavailableEnergy
 
         let result = engine.apply(.play, to: initial, at: hoursAfter(1))
 
         XCTAssertEqual(
             result.outcome,
             .rejected(
-                reason: .insufficientEnergy(required: 15, available: 14)
+                reason: .insufficientEnergy(
+                    required: requiredEnergy,
+                    available: unavailableEnergy
+                )
             )
         )
-        XCTAssertEqual(result.state.stats.energy, 14, accuracy: 0.000_001)
+        assertStats(
+            result.state.stats,
+            hunger: 78.5,
+            happiness: 79.5,
+            energy: unavailableEnergy,
+            bond: 10
+        )
         XCTAssertEqual(result.state.lastCalculatedAt, hoursAfter(1))
         XCTAssertNil(result.state.lastInteractionAt)
     }

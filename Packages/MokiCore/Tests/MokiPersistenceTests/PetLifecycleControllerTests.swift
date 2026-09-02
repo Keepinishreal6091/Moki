@@ -86,7 +86,9 @@ final class PetLifecycleControllerTests: XCTestCase {
             id: persistenceTestID,
             at: persistenceTestDate
         )
-        stored.stats.energy = 15
+        let requiredEnergy = MokiBalance.approvedV01.minimumEnergyToPlay
+        let unavailableEnergy = requiredEnergy - 1
+        stored.stats.energy = unavailableEnergy
         let store = MemoryPetStore(storedState: stored)
         let clock = MutableMokiClock(now: persistenceHoursAfter(1))
         let controller = PetLifecycleController(store: store, clock: clock)
@@ -94,7 +96,27 @@ final class PetLifecycleControllerTests: XCTestCase {
         let result = controller.apply(.play)
 
         XCTAssertFalse(result.wasApplied)
-        XCTAssertEqual(result.state.stats.energy, 14, accuracy: 0.000_001)
+        XCTAssertEqual(
+            result.outcome,
+            .rejected(
+                reason: .insufficientEnergy(
+                    required: requiredEnergy,
+                    available: unavailableEnergy
+                )
+            )
+        )
+        XCTAssertEqual(result.state.stats.hunger, 78.5, accuracy: 0.000_001)
+        XCTAssertEqual(result.state.stats.happiness, 79.5, accuracy: 0.000_001)
+        XCTAssertEqual(
+            result.state.stats.energy,
+            unavailableEnergy,
+            accuracy: 0.000_001
+        )
+        XCTAssertEqual(
+            result.state.lastCalculatedAt,
+            persistenceHoursAfter(1)
+        )
+        XCTAssertNil(result.state.lastInteractionAt)
         XCTAssertEqual(store.storedState, result.state)
         XCTAssertEqual(store.saveCount, 2)
     }
