@@ -1,0 +1,620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		300000000000000000000001 /* MokiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000001 /* MokiApp.swift */; };
+		300000000000000000000002 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000002 /* AppContainer.swift */; };
+		300000000000000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000004 /* Assets.xcassets */; };
+		300000000000000000000004 /* MokiCore in Frameworks */ = {isa = PBXBuildFile; productRef = 700000000000000000000002 /* MokiCore */; };
+		300000000000000000000005 /* MokiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000005 /* MokiAppTests.swift */; };
+		300000000000000000000006 /* MokiCore in Frameworks */ = {isa = PBXBuildFile; productRef = 700000000000000000000003 /* MokiCore */; };
+		300000000000000000000007 /* MokiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000006 /* MokiUITests.swift */; };
+		300000000000000000000008 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000B /* Localizable.xcstrings */; };
+		30000000000000000000000B /* AppGroupPetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000C /* AppGroupPetStore.swift */; };
+		30000000000000000000000C /* PetSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000D /* PetSession.swift */; };
+		30000000000000000000000D /* MokiPersistence in Frameworks */ = {isa = PBXBuildFile; productRef = 700000000000000000000004 /* MokiPersistence */; };
+		30000000000000000000000E /* PetRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000E /* PetRoomView.swift */; };
+		30000000000000000000000F /* MokiPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000F /* MokiPlaceholderView.swift */; };
+		300000000000000000000010 /* StatMetersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000010 /* StatMetersView.swift */; };
+		300000000000000000000011 /* PetActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000011 /* PetActionBar.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		800000000000000000000003 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100000000000000000000004 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 100000000000000000000001;
+			remoteInfo = Moki;
+		};
+		800000000000000000000004 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100000000000000000000004 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 100000000000000000000001;
+			remoteInfo = Moki;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* MokiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokiApp.swift; sourceTree = "<group>"; };
+		200000000000000000000002 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		200000000000000000000003 /* Moki.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moki.entitlements; sourceTree = "<group>"; };
+		200000000000000000000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		200000000000000000000005 /* MokiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokiAppTests.swift; sourceTree = "<group>"; };
+		200000000000000000000006 /* MokiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokiUITests.swift; sourceTree = "<group>"; };
+		200000000000000000000007 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		200000000000000000000008 /* Moki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moki.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000009 /* MokiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MokiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20000000000000000000000A /* MokiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MokiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20000000000000000000000B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		20000000000000000000000C /* AppGroupPetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupPetStore.swift; sourceTree = "<group>"; };
+		20000000000000000000000D /* PetSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSession.swift; sourceTree = "<group>"; };
+		20000000000000000000000E /* PetRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRoomView.swift; sourceTree = "<group>"; };
+		20000000000000000000000F /* MokiPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokiPlaceholderView.swift; sourceTree = "<group>"; };
+		200000000000000000000010 /* StatMetersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatMetersView.swift; sourceTree = "<group>"; };
+		200000000000000000000011 /* PetActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetActionBar.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		400000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000004 /* MokiCore in Frameworks */,
+				30000000000000000000000D /* MokiPersistence in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		400000000000000000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000006 /* MokiCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		400000000000000000000007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		100000000000000000000005 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000007 /* MokiApp */,
+				10000000000000000000000A /* MokiAppTests */,
+				10000000000000000000000B /* MokiUITests */,
+				10000000000000000000000C /* MokiWidget */,
+				100000000000000000000006 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		100000000000000000000006 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000008 /* Moki.app */,
+				200000000000000000000009 /* MokiAppTests.xctest */,
+				20000000000000000000000A /* MokiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		100000000000000000000007 /* MokiApp */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000008 /* App */,
+				10000000000000000000000F /* Features */,
+				10000000000000000000000D /* Persistence */,
+				10000000000000000000000E /* State */,
+				100000000000000000000009 /* Resources */,
+				200000000000000000000003 /* Moki.entitlements */,
+			);
+			path = MokiApp;
+			sourceTree = "<group>";
+		};
+		100000000000000000000008 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000001 /* MokiApp.swift */,
+				200000000000000000000002 /* AppContainer.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		100000000000000000000009 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000004 /* Assets.xcassets */,
+				20000000000000000000000B /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		10000000000000000000000A /* MokiAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000005 /* MokiAppTests.swift */,
+			);
+			path = MokiAppTests;
+			sourceTree = "<group>";
+		};
+		10000000000000000000000B /* MokiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000006 /* MokiUITests.swift */,
+			);
+			path = MokiUITests;
+			sourceTree = "<group>";
+		};
+		10000000000000000000000C /* MokiWidget */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000007 /* README.md */,
+			);
+			path = MokiWidget;
+			sourceTree = "<group>";
+		};
+		10000000000000000000000D /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000000C /* AppGroupPetStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		10000000000000000000000E /* State */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000000D /* PetSession.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		10000000000000000000000F /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000010 /* PetRoom */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		100000000000000000000010 /* PetRoom */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000000E /* PetRoomView.swift */,
+				20000000000000000000000F /* MokiPlaceholderView.swift */,
+				200000000000000000000010 /* StatMetersView.swift */,
+				200000000000000000000011 /* PetActionBar.swift */,
+			);
+			path = PetRoom;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		100000000000000000000001 /* Moki */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000002 /* Build configuration list for PBXNativeTarget "Moki" */;
+			buildPhases = (
+				400000000000000000000002 /* Sources */,
+				400000000000000000000001 /* Frameworks */,
+				400000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Moki;
+			packageProductDependencies = (
+				700000000000000000000002 /* MokiCore */,
+				700000000000000000000004 /* MokiPersistence */,
+			);
+			productName = Moki;
+			productReference = 200000000000000000000008 /* Moki.app */;
+			productType = "com.apple.product-type.application";
+		};
+		100000000000000000000002 /* MokiAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000003 /* Build configuration list for PBXNativeTarget "MokiAppTests" */;
+			buildPhases = (
+				400000000000000000000005 /* Sources */,
+				400000000000000000000004 /* Frameworks */,
+				400000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				800000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = MokiAppTests;
+			packageProductDependencies = (
+				700000000000000000000003 /* MokiCore */,
+			);
+			productName = MokiAppTests;
+			productReference = 200000000000000000000009 /* MokiAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		100000000000000000000003 /* MokiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000004 /* Build configuration list for PBXNativeTarget "MokiUITests" */;
+			buildPhases = (
+				400000000000000000000008 /* Sources */,
+				400000000000000000000007 /* Frameworks */,
+				400000000000000000000009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				800000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = MokiUITests;
+			packageProductDependencies = (
+			);
+			productName = MokiUITests;
+			productReference = 20000000000000000000000A /* MokiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		100000000000000000000004 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					100000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					100000000000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 100000000000000000000001;
+					};
+					100000000000000000000003 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 100000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = 600000000000000000000001 /* Build configuration list for PBXProject "Moki" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 100000000000000000000005;
+			packageReferences = (
+				700000000000000000000001 /* XCLocalSwiftPackageReference "MokiCore" */,
+			);
+			productRefGroup = 100000000000000000000006 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				100000000000000000000001 /* Moki */,
+				100000000000000000000002 /* MokiAppTests */,
+				100000000000000000000003 /* MokiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		400000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000003 /* Assets.xcassets in Resources */,
+				300000000000000000000008 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		400000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		400000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		400000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000001 /* MokiApp.swift in Sources */,
+				300000000000000000000002 /* AppContainer.swift in Sources */,
+				30000000000000000000000B /* AppGroupPetStore.swift in Sources */,
+				30000000000000000000000C /* PetSession.swift in Sources */,
+				30000000000000000000000E /* PetRoomView.swift in Sources */,
+				30000000000000000000000F /* MokiPlaceholderView.swift in Sources */,
+				300000000000000000000010 /* StatMetersView.swift in Sources */,
+				300000000000000000000011 /* PetActionBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		400000000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000005 /* MokiAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		400000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000007 /* MokiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		800000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 100000000000000000000001 /* Moki */;
+			targetProxy = 800000000000000000000003 /* PBXContainerItemProxy */;
+		};
+		800000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 100000000000000000000001 /* Moki */;
+			targetProxy = 800000000000000000000004 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		500000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		500000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		500000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MokiApp/Moki.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Moki;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_MokiAppGroupIdentifier = "$(MOKI_APP_GROUP_IDENTIFIER)";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 0.1.0;
+				MOKI_APP_GROUP_IDENTIFIER = group.com.example.moki;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Moki;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		500000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MokiApp/Moki.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Moki;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_MokiAppGroupIdentifier = "$(MOKI_APP_GROUP_IDENTIFIER)";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 0.1.0;
+				MOKI_APP_GROUP_IDENTIFIER = group.com.example.moki;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Moki;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		500000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MokiAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moki.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Moki";
+			};
+			name = Debug;
+		};
+		500000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MokiAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moki.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Moki";
+			};
+			name = Release;
+		};
+		500000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MokiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Moki;
+			};
+			name = Debug;
+		};
+		500000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MokiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Moki;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600000000000000000000001 /* Build configuration list for PBXProject "Moki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500000000000000000000001 /* Debug */,
+				500000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		600000000000000000000002 /* Build configuration list for PBXNativeTarget "Moki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500000000000000000000003 /* Debug */,
+				500000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		600000000000000000000003 /* Build configuration list for PBXNativeTarget "MokiAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500000000000000000000005 /* Debug */,
+				500000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		600000000000000000000004 /* Build configuration list for PBXNativeTarget "MokiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500000000000000000000007 /* Debug */,
+				500000000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		700000000000000000000001 /* XCLocalSwiftPackageReference "MokiCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MokiCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		700000000000000000000002 /* MokiCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 700000000000000000000001 /* XCLocalSwiftPackageReference "MokiCore" */;
+			productName = MokiCore;
+		};
+		700000000000000000000003 /* MokiCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 700000000000000000000001 /* XCLocalSwiftPackageReference "MokiCore" */;
+			productName = MokiCore;
+		};
+		700000000000000000000004 /* MokiPersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 700000000000000000000001 /* XCLocalSwiftPackageReference "MokiCore" */;
+			productName = MokiPersistence;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 100000000000000000000004 /* Project object */;
+}

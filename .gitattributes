@@ -1,0 +1,15 @@
+* text=auto
+
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.swift text eol=lf
+*.pbxproj text eol=lf
+*.xcscheme text eol=lf
+*.xcworkspacedata text eol=lf
+*.entitlements text eol=lf
+*.json text eol=lf
+*.xcstrings text eol=lf
+*.md text eol=lf
+
+*.png binary
+*.docx binary
