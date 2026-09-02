@@ -9,10 +9,12 @@ struct PetRoomView: View {
 
     var body: some View {
         GeometryReader { proxy in
+            let usesCompactSpacing = proxy.size.height < 700
+
             ZStack {
                 RoomBackgroundView()
 
-                VStack(spacing: 12) {
+                VStack(spacing: usesCompactSpacing ? 8 : 12) {
                     roomHeader
 
                     StatMetersView(stats: session.state.stats)
@@ -25,7 +27,10 @@ struct PetRoomView: View {
                         reduceMotion: reduceMotion
                     )
                     .frame(
-                        height: min(max(proxy.size.height * 0.32, 190), 270)
+                        height: mokiStageHeight(
+                            availableHeight: proxy.size.height,
+                            usesCompactSpacing: usesCompactSpacing
+                        )
                     )
 
                     feedbackArea
@@ -39,9 +44,9 @@ struct PetRoomView: View {
                         perform: session.apply
                     )
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 8)
-                .padding(.bottom, 12)
+                .padding(.horizontal, usesCompactSpacing ? 12 : 16)
+                .padding(.top, usesCompactSpacing ? 6 : 8)
+                .padding(.bottom, usesCompactSpacing ? 8 : 12)
             }
         }
         .task {
@@ -56,6 +61,17 @@ struct PetRoomView: View {
         }
     }
 
+    private func mokiStageHeight(
+        availableHeight: CGFloat,
+        usesCompactSpacing: Bool
+    ) -> CGFloat {
+        if usesCompactSpacing {
+            return min(max(availableHeight * 0.26, 160), 210)
+        }
+
+        return min(max(availableHeight * 0.32, 190), 270)
+    }
+
     private var roomHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
@@ -66,7 +82,7 @@ struct PetRoomView: View {
 
                 Text(roomSubtitle)
                     .font(.subheadline)
-                    .foregroundStyle(MokiRoomPalette.ink.opacity(0.7))
+                    .foregroundStyle(MokiRoomPalette.secondaryInk)
             }
 
             Spacer()
@@ -76,6 +92,17 @@ struct PetRoomView: View {
                 .foregroundStyle(MokiRoomPalette.gold)
                 .accessibilityHidden(true)
         }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(
+            MokiRoomPalette.panel.opacity(0.94),
+            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(MokiRoomPalette.panelBorder, lineWidth: 1)
+        }
+        .shadow(color: MokiRoomPalette.shadow.opacity(0.14), radius: 10, y: 4)
     }
 
     private var roomSubtitle: LocalizedStringKey {
@@ -136,52 +163,15 @@ struct PetRoomView: View {
 private struct RoomBackgroundView: View {
     var body: some View {
         GeometryReader { proxy in
-            ZStack(alignment: .bottom) {
-                LinearGradient(
-                    colors: [
-                        MokiRoomPalette.wallTop,
-                        MokiRoomPalette.wallBottom
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.white.opacity(0.55))
-                    .overlay {
-                        VStack(spacing: 0) {
-                            Color.clear
-                            Rectangle()
-                                .fill(MokiRoomPalette.sky.opacity(0.5))
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
-                    }
-                    .overlay {
-                        HStack(spacing: 0) {
-                            Rectangle().frame(width: 3)
-                            Color.clear
-                            Rectangle().frame(width: 3)
-                        }
-                        .foregroundStyle(.white.opacity(0.8))
-                    }
-                    .frame(width: 104, height: 116)
-                    .position(x: proxy.size.width * 0.78, y: proxy.size.height * 0.27)
-                    .shadow(color: MokiRoomPalette.shadow.opacity(0.08), radius: 8, y: 4)
-
-                Rectangle()
-                    .fill(MokiRoomPalette.baseboard)
-                    .frame(height: 8)
-                    .offset(y: -proxy.size.height * 0.27)
-
-                LinearGradient(
-                    colors: [MokiRoomPalette.floorTop, MokiRoomPalette.floorBottom],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .frame(height: proxy.size.height * 0.28)
-            }
-            .ignoresSafeArea()
+            Image("MokiRoomBackground")
+                .resizable()
+                .interpolation(.high)
+                .scaledToFill()
+                .frame(width: proxy.size.width, height: proxy.size.height)
+                .clipped()
         }
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
         .accessibilityHidden(true)
     }
 }
@@ -196,8 +186,12 @@ private struct PetFeedbackBubble: View {
             .foregroundStyle(MokiRoomPalette.ink)
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
-            .background(.ultraThinMaterial, in: Capsule())
-            .shadow(color: MokiRoomPalette.shadow.opacity(0.1), radius: 5, y: 2)
+            .background(MokiRoomPalette.panel.opacity(0.96), in: Capsule())
+            .overlay {
+                Capsule()
+                    .stroke(MokiRoomPalette.panelBorder, lineWidth: 1)
+            }
+            .shadow(color: MokiRoomPalette.shadow.opacity(0.16), radius: 6, y: 3)
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isStaticText)
             .accessibilityIdentifier("pet.feedback")
@@ -250,32 +244,36 @@ enum MokiRoomPalette {
                 : UIColor(red: 0.18, green: 0.16, blue: 0.13, alpha: 1)
         }
     )
+    static let secondaryInk = adaptiveColor(
+        light: (0.36, 0.29, 0.21),
+        dark: (0.78, 0.71, 0.62)
+    )
     static let shadow = Color.black
-    static let gold = Color(red: 0.72, green: 0.48, blue: 0.17)
-    static let wallTop = adaptiveColor(
-        light: (0.96, 0.91, 0.82),
-        dark: (0.22, 0.18, 0.16)
+    static let gold = adaptiveColor(
+        light: (0.66, 0.42, 0.14),
+        dark: (0.91, 0.69, 0.34)
     )
-    static let wallBottom = adaptiveColor(
-        light: (0.90, 0.82, 0.70),
-        dark: (0.14, 0.11, 0.10)
+    static let panel = adaptiveColor(
+        light: (0.98, 0.94, 0.85),
+        dark: (0.14, 0.12, 0.10)
     )
-    static let baseboard = adaptiveColor(
-        light: (0.67, 0.50, 0.34),
-        dark: (0.31, 0.23, 0.18)
+    static let controlSurface = adaptiveColor(
+        light: (0.94, 0.87, 0.74),
+        dark: (0.20, 0.17, 0.14)
     )
-    static let floorTop = adaptiveColor(
-        light: (0.76, 0.59, 0.41),
-        dark: (0.25, 0.18, 0.14)
+    static let panelBorder = adaptiveColor(
+        light: (0.70, 0.55, 0.34),
+        dark: (0.48, 0.36, 0.22)
     )
-    static let floorBottom = adaptiveColor(
-        light: (0.60, 0.43, 0.29),
-        dark: (0.13, 0.09, 0.08)
+    static let meterTrack = adaptiveColor(
+        light: (0.79, 0.71, 0.60),
+        dark: (0.31, 0.27, 0.23)
     )
-    static let sky = adaptiveColor(
-        light: (0.52, 0.75, 0.86),
-        dark: (0.12, 0.24, 0.34)
-    )
+    static let hunger = Color(red: 0.77, green: 0.40, blue: 0.18)
+    static let happiness = Color(red: 0.74, green: 0.31, blue: 0.36)
+    static let energy = Color(red: 0.78, green: 0.57, blue: 0.13)
+    static let bond = Color(red: 0.51, green: 0.35, blue: 0.58)
+    static let rest = Color(red: 0.30, green: 0.42, blue: 0.56)
 
     private static func adaptiveColor(
         light: (red: CGFloat, green: CGFloat, blue: CGFloat),

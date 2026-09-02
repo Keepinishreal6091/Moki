@@ -10,7 +10,7 @@ struct PetActionBar: View {
             PetActionButton(
                 title: "Feed",
                 symbol: "carrot.fill",
-                tint: .orange,
+                tint: MokiRoomPalette.hunger,
                 hint: isSleeping
                     ? "Wake Moki before feeding."
                     : "Give Moki a snack.",
@@ -22,7 +22,7 @@ struct PetActionBar: View {
             PetActionButton(
                 title: "Play",
                 symbol: "balloon.2.fill",
-                tint: .pink,
+                tint: MokiRoomPalette.happiness,
                 hint: isSleeping
                     ? "Wake Moki before playing."
                     : "Play together using Energy.",
@@ -34,7 +34,7 @@ struct PetActionBar: View {
             PetActionButton(
                 title: "Care",
                 symbol: "hands.sparkles.fill",
-                tint: .purple,
+                tint: MokiRoomPalette.bond,
                 hint: isSleeping
                     ? "Wake Moki before giving care."
                     : "Spend a quiet moment caring for Moki.",
@@ -46,7 +46,7 @@ struct PetActionBar: View {
             PetActionButton(
                 title: isSleeping ? "Wake" : "Sleep",
                 symbol: isSleeping ? "sun.max.fill" : "moon.zzz.fill",
-                tint: .indigo,
+                tint: MokiRoomPalette.rest,
                 hint: isSleeping
                     ? "Wake Moki up."
                     : "Put Moki to sleep to recover Energy.",
@@ -56,8 +56,15 @@ struct PetActionBar: View {
             }
         }
         .padding(8)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20))
-        .shadow(color: MokiRoomPalette.ink.opacity(0.12), radius: 8, y: 3)
+        .background(
+            MokiRoomPalette.panel.opacity(0.96),
+            in: RoundedRectangle(cornerRadius: 22, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(MokiRoomPalette.panelBorder, lineWidth: 1)
+        }
+        .shadow(color: MokiRoomPalette.shadow.opacity(0.18), radius: 10, y: 4)
     }
 }
 
@@ -74,17 +81,27 @@ private struct PetActionButton: View {
             VStack(spacing: 5) {
                 Image(systemName: symbol)
                     .font(.title3)
+                    .foregroundStyle(tint)
+                    .frame(width: 34, height: 30)
+                    .background(tint.opacity(0.14), in: Circle())
                     .accessibilityHidden(true)
 
                 Text(title)
                     .font(.caption.weight(.bold))
+                    .foregroundStyle(MokiRoomPalette.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
             }
-            .foregroundStyle(tint)
-            .frame(maxWidth: .infinity, minHeight: 52)
-            .background(tint.opacity(0.14), in: RoundedRectangle(cornerRadius: 13))
-            .contentShape(RoundedRectangle(cornerRadius: 13))
+            .frame(maxWidth: .infinity, minHeight: 56)
+            .background(
+                MokiRoomPalette.controlSurface,
+                in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(MokiRoomPalette.panelBorder.opacity(0.7), lineWidth: 1)
+            }
+            .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(Text(title))

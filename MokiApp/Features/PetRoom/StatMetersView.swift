@@ -11,14 +11,14 @@ struct StatMetersView: View {
                     title: "Hunger",
                     symbol: "fork.knife",
                     value: stats.hunger,
-                    tint: .orange,
+                    tint: MokiRoomPalette.hunger,
                     identifier: "stat.hunger"
                 )
                 StatMeter(
                     title: "Happiness",
                     symbol: "face.smiling.fill",
                     value: stats.happiness,
-                    tint: .pink,
+                    tint: MokiRoomPalette.happiness,
                     identifier: "stat.happiness"
                 )
             }
@@ -28,21 +28,28 @@ struct StatMetersView: View {
                     title: "Energy",
                     symbol: "bolt.fill",
                     value: stats.energy,
-                    tint: .yellow,
+                    tint: MokiRoomPalette.energy,
                     identifier: "stat.energy"
                 )
                 StatMeter(
                     title: "Bond",
                     symbol: "heart.fill",
                     value: stats.bond,
-                    tint: .purple,
+                    tint: MokiRoomPalette.bond,
                     identifier: "stat.bond"
                 )
             }
         }
         .padding(12)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18))
-        .shadow(color: MokiRoomPalette.ink.opacity(0.08), radius: 8, y: 3)
+        .background(
+            MokiRoomPalette.panel.opacity(0.94),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(MokiRoomPalette.panelBorder, lineWidth: 1)
+        }
+        .shadow(color: MokiRoomPalette.shadow.opacity(0.14), radius: 10, y: 4)
     }
 }
 
@@ -65,7 +72,10 @@ private struct StatMeter: View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(spacing: 5) {
                 Image(systemName: symbol)
+                    .font(.caption.weight(.bold))
                     .foregroundStyle(tint)
+                    .frame(width: 22, height: 22)
+                    .background(tint.opacity(0.14), in: Circle())
                     .accessibilityHidden(true)
 
                 Text(title)
@@ -77,9 +87,24 @@ private struct StatMeter: View {
                     .font(.caption.monospacedDigit().weight(.bold))
             }
 
-            ProgressView(value: boundedValue, total: 100)
-                .tint(tint)
-                .accessibilityHidden(true)
+            GeometryReader { proxy in
+                ZStack(alignment: .leading) {
+                    Capsule()
+                        .fill(MokiRoomPalette.meterTrack)
+
+                    Capsule()
+                        .fill(tint)
+                        .frame(
+                            width: proxy.size.width * CGFloat(boundedValue / 100)
+                        )
+                }
+                .overlay {
+                    Capsule()
+                        .stroke(MokiRoomPalette.panelBorder.opacity(0.55), lineWidth: 0.5)
+                }
+            }
+            .frame(height: 8)
+            .accessibilityHidden(true)
         }
         .foregroundStyle(MokiRoomPalette.ink)
         .accessibilityElement(children: .ignore)

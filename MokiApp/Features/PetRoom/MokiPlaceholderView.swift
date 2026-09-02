@@ -10,40 +10,53 @@ struct MokiPlaceholderView: View {
     let reduceMotion: Bool
 
     var body: some View {
-        TimelineView(
-            .animation(
-                minimumInterval: 1.0 / 30.0,
-                paused: reduceMotion
-            )
-        ) { context in
-            let seconds = context.date.timeIntervalSinceReferenceDate
-            let idleScale: CGFloat = reduceMotion
-                ? 1.0
-                : 1.0 + CGFloat(sin(seconds * 2.1)) * 0.018
-            let tailSwing = reduceMotion || isSleeping
-                ? 0.0
-                : sin(seconds * 4.0) * 10.0
-            let isBlinking = isSleeping || (
-                !reduceMotion
-                    && seconds.truncatingRemainder(dividingBy: 4.1) < 0.13
+        GeometryReader { proxy in
+            let fittedScale = min(
+                1,
+                min(proxy.size.width / 260, proxy.size.height / 250)
             )
 
-            ZStack(alignment: .bottom) {
-                Ellipse()
-                    .fill(MokiRoomPalette.shadow.opacity(0.16))
-                    .frame(width: 190, height: 24)
-                    .blur(radius: 3)
-                    .offset(y: 2)
-
-                MokiCharacterArt(
-                    isSleeping: isSleeping,
-                    isBlinking: isBlinking,
-                    tailAngle: tailSwing
+            TimelineView(
+                .animation(
+                    minimumInterval: 1.0 / 30.0,
+                    paused: reduceMotion
                 )
-                .scaleEffect(idleScale * reactionScale)
-                .offset(y: reduceMotion ? 0 : reactionOffset)
-                .rotationEffect(reduceMotion ? .zero : reactionRotation)
-                .animation(reactionAnimation, value: reaction)
+            ) { context in
+                let seconds = context.date.timeIntervalSinceReferenceDate
+                let idleScale: CGFloat = reduceMotion
+                    ? 1.0
+                    : 1.0 + CGFloat(sin(seconds * 2.1)) * 0.018
+                let tailSwing = reduceMotion || isSleeping
+                    ? 0.0
+                    : sin(seconds * 4.0) * 10.0
+                let isBlinking = isSleeping || (
+                    !reduceMotion
+                        && seconds.truncatingRemainder(dividingBy: 4.1) < 0.13
+                )
+
+                ZStack(alignment: .bottom) {
+                    Ellipse()
+                        .fill(MokiRoomPalette.shadow.opacity(0.16))
+                        .frame(width: 190, height: 24)
+                        .blur(radius: 3)
+                        .offset(y: 2)
+
+                    MokiCharacterArt(
+                        isSleeping: isSleeping,
+                        isBlinking: isBlinking,
+                        tailAngle: tailSwing
+                    )
+                    .scaleEffect(idleScale * reactionScale)
+                    .offset(y: reduceMotion ? 0 : reactionOffset)
+                    .rotationEffect(reduceMotion ? .zero : reactionRotation)
+                    .animation(reactionAnimation, value: reaction)
+                }
+                .scaleEffect(fittedScale, anchor: .bottom)
+                .frame(
+                    width: proxy.size.width,
+                    height: proxy.size.height,
+                    alignment: .bottom
+                )
             }
         }
         .accessibilityElement(children: .ignore)
